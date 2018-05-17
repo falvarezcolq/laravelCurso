@@ -2,13 +2,13 @@
 
 
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+ // Route::get('/', function () {
+ //     return view('welcome');
+ // });
 
-// Route::get( '/prueba' , function(){
-//     return "Prueba";
-// });
+ // Route::get( '/prueba' , function(){
+ //     return "Prueba";
+ // });
 
 // Route::get( '/numeros/{num}' ,function($num){
 //     return "Esto es si y solo si un número {$num}";
@@ -18,12 +18,16 @@
 //     return "Esto es si y solo si una cadena {$cad}";
 // }) -> where( 'cad' , '[A-Za-z]+' );
 
-// Route::get('/inicio' , 'InitController@index');
+//Route::get('inicio' , 'InitController@index');
 // Route::get('/inicio/index2' , 'InitController@index2');
 // Route::get( '/home' , 'HomeController');
 // Route::get( '/usuarios' , 'UserController@lista');
 // Route::get( '/usuarios/{id}/{name}' ,'userController@read' );
 // Route::resource( '/product' , 'ProductController');
-
+		
 Route::get('/','InitController@index');
-Route::get('/home' ,'HomeController');
+Route::get('home' ,'HomeController');
+
+Route::resource('profession', 'ProfessionController');
+
+//php artisan route:list

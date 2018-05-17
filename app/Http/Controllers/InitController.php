@@ -10,6 +10,7 @@ class InitController extends Controller
     function index(){
         //return 'Esta es la pagina de inicio';
         //return view('inicio');
+        
         return view('login.index');
     }
 
