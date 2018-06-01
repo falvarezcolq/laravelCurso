@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('last_name'); //nueva linea
             $table->string('email',100)->unique();
             $table->string('password',500);
+            $table->boolean('is_admin')->default(false);
             $table->unsignedInteger('profession_id');
             $table->foreign('profession_id')
                 ->references('id')

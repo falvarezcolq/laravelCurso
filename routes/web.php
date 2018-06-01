@@ -18,7 +18,7 @@
 //     return "Esto es si y solo si una cadena {$cad}";
 // }) -> where( 'cad' , '[A-Za-z]+' );
 
-//Route::get('inicio' , 'InitController@index');
+// Route::get('inicio' , 'InitController@index');
 // Route::get('/inicio/index2' , 'InitController@index2');
 // Route::get( '/home' , 'HomeController');
 // Route::get( '/usuarios' , 'UserController@lista');
@@ -29,5 +29,7 @@ Route::get('/','InitController@index');
 Route::get('home' ,'HomeController');
 
 Route::resource('profession', 'ProfessionController');
+Route::resource('product' ,'ProductController');
+Route::resource('user','UserController');
 
 //php artisan route:list

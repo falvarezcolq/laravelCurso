@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name','last_name','email','password','profession_id',
     ];
 
     /**
@@ -26,4 +26,22 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    protected $casts=[
+        'is_admin' => 'boolean',
+    ];
+
+
+    public function profession(){    // profession_id
+        return $this->belongsTo(Profession::class);
+    }
+
+    public function sales(){
+        return $this->hasMany(Sale::class);
+    }
+
+
+    public function isAdmin(){
+        return $this->is_admin;
+    }
 }

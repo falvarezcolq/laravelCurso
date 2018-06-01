@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Skill;
 use Illuminate\Http\Request;
-use App\Product;
-class ProductController extends Controller
+
+class SkillController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        return view('product.index')->with('products' , $products);
+        //
     }
 
     /**
@@ -24,7 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('product.create');
+        //
     }
 
     /**
@@ -35,21 +35,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new Product;
-        $product->name= $request->name;
-        $product->price = $request->price;
-        $product->save();
-
-        return redirect('product');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Skill  $skill
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Skill $skill)
     {
         //
     }
@@ -57,43 +52,34 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Skill  $skill
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Skill $skill)
     {
-        $product = Product::find($id);
-        return view('product.edit')->with('product', $product );
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Skill  $skill
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Skill $skill)
     {
-         $product = Product::find($id);
-         $product->name= $request->name;
-         $product->price = $request->price;
-         $product->save();
-          return redirect('product');
-
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Skill  $skill
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Skill $skill)
     {
-        $product = Product::find($id);
-        $product->delete();
-
-        return redirect('product');
+        //
     }
 }
