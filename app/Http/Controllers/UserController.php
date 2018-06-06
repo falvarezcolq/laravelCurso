@@ -26,7 +26,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $users =User::all();
+        return view('user.create')->with('users',$users);
     }
 
     /**
@@ -37,7 +38,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User;
+        $user->name = $request->name;
+        $user->last_name = $request->last_name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->profession_id = $request->profession_id;
+        $user->save();
+        
+        return redirect('user');
     }
 
     /**

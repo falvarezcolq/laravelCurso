@@ -29,10 +29,9 @@
                 <a class="navbar-brand" href="index.html">Laravel -Curso</a>
             </div>
             <!-- /.navbar-header -->
-
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                    <a href="index.html">nombre de ususario</a>
+                    <a href="index.html">{{ Auth::user()->name }}</a>
                 </li>
                
                 <li class="dropdown">
@@ -46,13 +45,15 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="{{ url('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>
                 <!-- /.dropdown -->
             </ul>
+         
+         
             <!-- /.navbar-top-links -->
 
             <div class="navbar-default sidebar" role="navigation">
@@ -63,13 +64,14 @@
                             <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> inicio</a>
                         </li>
                         <li>
-                            <a href="#">
+                               <a href="#">
                             	<i class="fa fa-bar-chart-o fa-fw"></i> Usuarios<span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Ver usuarios</a>
+                                    <a href="{{url('user')}}">Ver usuarios</a>
                                 </li>
+                                <li><a href="{{url('user/create')}}">Registrar usuario</a></li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
@@ -80,10 +82,40 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="reportProblem.html">Registrar</a>
+                                    <a href="{{ url('product/create')}}">Registrar producto</a>
                                 </li>
                                 <li>
-                                    <a href="reportSolution.html">Listar productos</a>
+                                    <a href="{{ url('product')}}">Listar productos</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                         <li>
+                            <a href="#">
+                            	<i class="fa fa-industry fa-fw"></i> Profesiones<span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ url('profession/create')}}">Registrar Profesion</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('profession')}}">Listar profesiones</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                         <li>
+                            <a href="#">
+                            	<i class="fa fa-industry fa-fw"></i> Ventas<span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ url('sale/create')}}">Registrar venta</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('sale')}}">Listar ventas</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -106,5 +138,8 @@
     <script src="{{ asset('asset/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('asset/vendor/metisMenu/metisMenu.min.js') }}"></script>   
     <script src="{{ asset('asset/dist/js/sb-admin-2.js') }}"></script>
+
+    @section('scripts')
+    @show
 </body>
 </html>

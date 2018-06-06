@@ -23,22 +23,34 @@
 </head>
 <body>
 
+	@if(Session::has('message-error'))
+		<div class="alert alert-danger alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			{{ Session::get('message-error')}}
+		</div>	
+	@endif
+
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
+
 				<div class="login-panel panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">Por favor ingrese sus credenciales</h3>
 					</div>
 					<div class="panel-body">
-					<form role="form">
+
+					<form action="{{ url('login')}}" method="POST">
 						<fieldset>
+							@csrf
 							<div class="form-group">
-								<input required type="text" class="form-control" name="user" placeholder="Usuario" autofocus>
+								<input required type="text" class="form-control" name="email" placeholder="Usuario" autofocus>
 							</div>
 
 							<div class="form-group">
-								<input required type="password" class="form-control" name="password" placeholder="contraseña" autofocus>
+								<input required type="password" class="form-control" name="password" placeholder="Contraseña" autofocus>
 							</div>
 
 							<div class="checkbox">
@@ -49,8 +61,9 @@
 
 							<!-- <input type="submit" value="Ingresar" class="btn btn-success"> -->
 
-							<a href="{{ url('home') }}" class="btn btn-success">Ingresar</a>
+							<!-- <a href="{{ url('home') }}" class="btn btn-success">Ingresar</a> -->
                             
+							<button type="submit" class="btn btn-success">ingresar</button>
 						</fieldset>
 					</form>
 				</div>

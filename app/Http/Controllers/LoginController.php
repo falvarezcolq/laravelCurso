@@ -1,19 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
+use Session;
+use Redirect;
 use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
 
-use App\Profession;
-class ProfessionController extends Controller
+class LoginController extends Controller
 {
-
-    public function listar(){
-        $professions = Profession::all();
-        return response()->json(
-            $profession->toArray()
-        );
-    }
     /**
      * Display a listing of the resource.
      *
@@ -21,13 +16,7 @@ class ProfessionController extends Controller
      */
     public function index()
     {
-      $professions = Profession::all();
-       // return view('profession.index',[
-       //     'professions' => $professions
-       //]);
-
-       return view('profession.index')
-                ->with('professions', $professions);
+        //
     }
 
     /**
@@ -37,7 +26,7 @@ class ProfessionController extends Controller
      */
     public function create()
     {
-        return view('profession.create'); 
+        //
     }
 
     /**
@@ -46,20 +35,21 @@ class ProfessionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LoginRequest $request)
     {
-        //
-        // $profession = new Profession;
-        // $profession->name = $request->name;
-        // $profession->save();
-
-        Profession::create([
-            'name' => $request->name
-        ]);
-
-        return redirect('profession');        
-
+        //return $request->email;
+        if(Auth::attempt(['email'=>$request->email,'password' => $request->password])){
+            return Redirect::to('home');
+        }
+        Session::flash('message-error','Datos incorrectos');
+        return Redirect::to('/');
     }
+
+        public function logout(){
+            Auth::logout();
+            return Redirect::to('/');
+        }
+
 
     /**
      * Display the specified resource.
@@ -69,8 +59,7 @@ class ProfessionController extends Controller
      */
     public function show($id)
     {
-      
-
+        //
     }
 
     /**
@@ -82,9 +71,6 @@ class ProfessionController extends Controller
     public function edit($id)
     {
         //
-        $profession = Profession::find($id);
-        return view('profession.edit')
-                    ->with('profession', $profession);
     }
 
     /**
@@ -97,12 +83,6 @@ class ProfessionController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $profession = Profession::find($id);
-        $profession->name = $request->name;
-        $profession->save();
-
-        return redirect('profession');
-
     }
 
     /**
@@ -114,10 +94,5 @@ class ProfessionController extends Controller
     public function destroy($id)
     {
         //
-        $profession = Profession::find($id);
-        $profession->delete();
-        
-        return redirect('profession');
-
     }
 }
